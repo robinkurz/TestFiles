@@ -1,0 +1,3 @@
+Nach Test 1Replica-SlaveFailure-1 hat der Leader sich geändert von node-0 auf node-1... und die öffentliche IP des Service ist somit doe von node-1
+
+Manager sind anfangs auch als Worker eingestuft, müssen gedrained werden wenn sie nur als manager fungieren sollen

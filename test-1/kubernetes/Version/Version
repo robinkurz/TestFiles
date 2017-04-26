@@ -1,0 +1,7 @@
+Docker = 1.12.6
+
+Ubuntu 16.04.2 LTS (with KVM) (4.4.0)
+
+kubectl version:
+Client Version: version.Info{Major:"1", Minor:"6", GitVersion:"v1.6.1", GitCommit:"b0b7a323cc5a4a2019b2e9520c21c7830b7f708e", GitTreeState:"clean", BuildDate:"2017-04-03T20:44:38Z", GoVersion:"go1.7.5", Compiler:"gc", Platform:"linux/amd64"}
+Server Version: version.Info{Major:"1", Minor:"5+", GitVersion:"v1.5.4-rancher1", GitCommit:"6ed2b64b2e1df9637661077d877a0483c58a6ae5", GitTreeState:"clean", BuildDate:"2017-03-17T16:58:04Z", GoVersion:"go1.7.4", Compiler:"gc", Platform:"linux/amd64"}

@@ -1,0 +1,10 @@
+Das CrashLoopBackoff Feature von Kubernetes wurde für die Tests umgangen.
+Es ist nicht möglich es auszuschalten oder zu konfigurieren.
+Deshalb musste der Pod zerstört werden nach jedem Test.
+
+Testprozess: Test ausführen -> Pod zerstören -> warten auf neuen Pod -> Test ausführen -> ...
+
+Slave wird neu gestartet bei Absturz. Ist das Kubernetes oder Rancher?
+Bei Herunterfahren bleibt es unten.
+
+Nach Neustart der Node wird Container wieder verteilt. 

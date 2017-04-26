@@ -1,0 +1,8 @@
+Wenn Mesos/Marathon in Rancher läuft und eine Instanz ausgeschalten wird, werden die Tasks nicht neu deployed.
+Wird eine Instanz zerstört werden sie neu deployed.
+
+Rancher deployed auch Zookeeper und Marathon neu, wenn noch Instanzen vorhanden sind.
+
+Wenn alle bis auf eine Instanz des Mesos Clusters zerstört werden ist auch Rancher nicht mehr verfügbar...
+nach langer Zeit ist sie UI wieder verfügbar.
+Die Applikationen sind auch wieder verfügbar.

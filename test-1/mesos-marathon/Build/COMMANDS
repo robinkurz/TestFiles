@@ -1,0 +1,13 @@
+-- set up system
+
+terraform plan -out plan
+
+terraform apply plan
+
+curl -X POST http://207.154.237.115:8080/v2/apps -d @mesos-marathon.json -H "Content-type: application/json"
+
+dcos package install marathon-lb
+
+curl -X PUT http://207.154.237.115:8080/v2/apps/testapp -d @3_replicas.json -H "Content-type: application/json"
+
+curl -X PUT http://207.154.237.115:8080/v2/apps/testapp -d @1_replica.json -H "Content-type: application/json"

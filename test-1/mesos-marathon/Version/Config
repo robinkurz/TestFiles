@@ -1,0 +1,64 @@
+Cluster Details
+General
+DC/OS Version
+1.9.0
+Cryptographic Cluster ID
+h6qd5jfj7ymd638bzh38w4cotja34ysqg7ukusindbb8co96jq4y
+Public IP
+10.135.65.193
+Marathon Details
+Version
+1.4.2
+Framework ID
+3dc7ea31-a34a-40c4-b1a5-277d01186233-0000
+Leader
+10.135.65.195:8080
+Marathon Config
+master
+zk://zk-1.zk:2181,zk-2.zk:2181,zk-3.zk:2181,zk-4.zk:2181,zk-5.zk:2181/mesos
+failover_timeout
+604800
+framework_name
+marathon
+ha
+true
+checkpoint
+true
+local_port_min
+10000
+local_port_max
+20000
+executor
+//cmd
+hostname
+10.135.65.195
+webui_url
+mesos_role
+slave_public
+task_launch_timeout
+86400000
+task_reservation_timeout
+20000
+reconciliation_initial_delay
+15000
+reconciliation_interval
+600000
+mesos_user
+root
+leader_proxy_connection_timeout_ms
+5000
+leader_proxy_read_timeout_ms
+10000
+features
+vipstask_killingexternal_volumesgpu_resources
+mesos_leader_ui_url
+/mesos
+ZooKeeper Config
+zk
+zk://zk-1.zk:2181,zk-2.zk:2181,zk-3.zk:2181,zk-4.zk:2181,zk-5.zk:2181/marathon
+zk_timeout
+10000
+zk_session_timeout
+10000
+zk_max_versions
+50

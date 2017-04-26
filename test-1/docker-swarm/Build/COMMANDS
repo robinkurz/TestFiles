@@ -1,0 +1,59 @@
+terraform plan -out plan
+
+terraform apply plan
+
+--managers
+
+ssh root@207.154.224.149
+
+docker swarm init --advertise-addr 207.154.224.149
+
+docker swarm join-token manager
+
+ssh root@207.154.228.181
+
+docker swarm join \
+    --token SWMTKN-1-42c747tgfe2jfea7uhfe03g7zpnw47qvlgc64trd10a5i4grt7-a2eovgd25kmeo4eieimhkosi6 \
+    207.154.224.149:2377
+
+ssh root@46.101.189.63
+
+docker swarm join \
+    --token SWMTKN-1-42c747tgfe2jfea7uhfe03g7zpnw47qvlgc64trd10a5i4grt7-a2eovgd25kmeo4eieimhkosi6 \
+    207.154.224.149:2377
+
+--workers
+ssh root@207.154.232.136
+
+docker swarm join \
+    --token SWMTKN-1-42c747tgfe2jfea7uhfe03g7zpnw47qvlgc64trd10a5i4grt7-55qhp1ikiglwff8f03eye7gpz \
+    207.154.224.149:2377
+
+ssh root@207.154.225.252
+
+docker swarm join \
+    --token SWMTKN-1-42c747tgfe2jfea7uhfe03g7zpnw47qvlgc64trd10a5i4grt7-55qhp1ikiglwff8f03eye7gpz \
+    207.154.224.149:2377
+
+--drain managers to disallow container hosting by them
+docker node --availability drain 207.154.224.149
+
+docker node --availability drain 207.154.228.181
+
+docker node --availability drain 46.101.189.63
+
+-- run service
+-- login to manager
+ssh root@207.154.224.149
+
+docker service create --name test-container \
+                        --replicas 2 \
+                        --publish 8080:8080 \
+                        rkurz/test-container
+
+docker service scale test-container=3
+
+--process failure tests
+docker service scale test-container=1
+
+docker service scale test-container=2

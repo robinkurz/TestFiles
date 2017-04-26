@@ -1,0 +1,11 @@
+rancher/lb-service-haproxy:v0.6.4
+
+Docker on slaves:  1.12.6
+
+
+Component	Version
+Rancher	v1.5.5
+Cattle	v0.178.3
+User Interface	v1.5.8
+Rancher CLI	v0.5.2
+Rancher Compose	v0.12.4

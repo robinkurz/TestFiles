@@ -1,0 +1,5 @@
+key_path = "~/.ssh/id_rsa"
+ssh_key_ID = "7340841"
+do_token = "<REDACTED>"
+num_instances = "3"
+region = "fra1"

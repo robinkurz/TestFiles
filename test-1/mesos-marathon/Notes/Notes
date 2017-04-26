@@ -1,0 +1,15 @@
+Nur auf dem DELL Laptop, und dort auch nur unter Windows, funktioniert die Verbindung zu dem LoadBalancer.
+Auf dem Arch und der VM schlägt die Verbindung fehl.
+
+Mesos-Marathon startet bei Absturz einer Node keinen Task auf einer anderen.
+Wenn die Node wieder gestartet wird, wird allerdings auch nicht die App neu gestartet.
+Wird der Task dann manuell neu gestartet wird er wieder auf der Node deployed.
+
+Dafür muss extra eine Konfiguration bei Taskabsturz vorgenommen werden.
+
+Diese funktioniert nach Ausprobieren aber nicht.
+GITHUBLINK
+
+Wenn das MasterQuorum verloren geht, ist keiner der Master mehr nutzbar.
+Einer der Master erlaubt zwar das Öffnen des DC/OS Dashboards, aber dort werden kein Informationen angezeigt.
+Die Tasks laufen weiterhin

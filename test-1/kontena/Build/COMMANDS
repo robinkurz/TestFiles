@@ -1,0 +1,36 @@
+--create masters
+
+kontena digitalocean master create \
+  --token <REDACTED> \
+  --ssh-key ~/.ssh/id_rsa.pub \
+  --size 4gb \
+  --region fra1
+
+--create grid
+kontena grid create --initial-size=3 test-grid
+
+--create slaves
+
+kontena digitalocean node create \
+  --token <REDACTED> \
+  --ssh-key ~/.ssh/id_rsa.pub \
+  --size 4gb \
+  --region fra1
+
+kontena digitalocean node create \
+  --token <REDACTED> \
+  --ssh-key ~/.ssh/id_rsa.pub \
+  --size 4gb \
+  --region fra1
+
+kontena digitalocean node create \
+  --token <REDACTED> \
+  --ssh-key ~/.ssh/id_rsa.pub \
+  --size 4gb \
+  --region fra1
+
+kontena node ls
+
+kontena node label add <note-id> LB=true
+
+kontena stack install --name container-test ~/thesis-tests/test-1/kontena/Build\ Service/kontena.yml

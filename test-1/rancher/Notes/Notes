@@ -1,0 +1,28 @@
+-- CLI
+
+./rancher config
+
+Wenn die Hosts über den Cloud Installer installiert werden, wird jedem ein anderer SSH Key zugewiesen.
+Diese müssen erst einzeln pro Host herunter geladen werden, dann zu jedem host ein neuer key hinzugefügt werden, der für alle drei einheitlich ist.
+
+Container Ports sollten nicht angegeben werden, da diese dann fest gebunden werden und ein zweiter Container nicht auf dem gleichen Host gestartet werden kann,
+da die Ports schon belegt sind.
+Wenn die Ports leer gelassen werden vergibt Rancher die Ports dynamisch.
+Der LoadBalancer weiß, dass er die Container auf dem Port 8080 errreicht.
+
+In dem Rancher Dashboard kann man das Sterben der Node und das Umlagern der Container schön beobachten.
+
+Der Shutdown Befehl machte Probleme, er wurde ersetzt mit dem Befehl 'echo c > /proc/sysrq-trigger'
+
+Der Rancher Scheduler verteilt die Container nicht, auch wenn genug freie Nodes verfügbar sinds.
+Deshalb wurde für die Node tests die Anti-Affinität gegen den eigenen Service gesetzt
+
+Mit der Anti-Affinität "should not" scheint der Scheduler es um alle Umstände vermeiden zu wollen die gleichen Services auf einer Node zu platziern...
+eher wie bei must not
+
+Rancher stellt container auf Stopp, anstatt sie zu löschen bei Node fails
+
+Auch mit der Anti-Affinität scheint der Scheduler, nachdem eine Node reconnected ist, nicht eine Neuverteilung durchzuführen
+Für den letzten Test wurde also herunter skaliert auf 1, dann wieder hoch skaliert und die container wurden vereilt.
+
+Wenn der Master down ist sind die Container zwar noch verfügar, aber es wird kein Scheduling mehr durchgeführt --> timeout

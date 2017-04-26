@@ -1,0 +1,8 @@
+After Node Failure with 1 Replica in the first test, the Container was rescheduled to another slave and seemed to be running according to kontena CLI, but calling the load balancer did not return a result, it said 503 Service Unavailable.
+
+After a Node Failure, Kontena reschedules the Container to a new node.
+ When the Node is back up, Kontena moves the Container back to the original Node.
+
+After Node Failure with 2 Replicas in the first test, the Container was rescheduled to another slave and seemed to be running according to kontena CLI, but calling the load balancer did not return a result.
+
+Kontena im initalen 3-Node Grid kann eine Node failure tolerieren, 2 nicht

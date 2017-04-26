@@ -1,0 +1,3 @@
+Sind zwei Cells vorhanden und eine app, wird bei skalierung auf 2 die neue app auf die freie Cell verlagert.
+
+Nachdem der Slave wieder da ist bleiben die Instanzen trotzdem auf einer Node und werden nicht neu verteilt.

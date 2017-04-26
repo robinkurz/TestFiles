@@ -1,0 +1,59 @@
+Name:		test-container-2452850900-j99l1
+Namespace:	default
+Node:		slave1.localdomain/139.59.135.232
+Start Time:	Sat, 15 Apr 2017 11:56:43 +0200
+Labels:		app=test-container
+		pod-template-hash=2452850900
+Annotations:	kubernetes.io/created-by={"kind":"SerializedReference","apiVersion":"v1","reference":{"kind":"ReplicaSet","namespace":"default","name":"test-container-2452850900","uid":"34b0766a-21ba-11e7-9f88-02f0af...
+Status:		Running
+IP:		10.42.202.230
+Controllers:	ReplicaSet/test-container-2452850900
+Containers:
+  test-container:
+    Container ID:	docker://06ac9290364575353cc5fc35acf5186c949b3dce5101ba1c704a5c736b14a94a
+    Image:		rkurz/test-container
+    Image ID:		docker-pullable://rkurz/test-container@sha256:d99d5f027d519279f576c40be75200b527b7d43b632db130a6b06ac31e51510d
+    Port:		
+    State:		Running
+      Started:		Sat, 15 Apr 2017 11:57:45 +0200
+    Last State:		Terminated
+      Reason:		Error
+      Exit Code:	143
+      Started:		Sat, 15 Apr 2017 11:56:46 +0200
+      Finished:		Sat, 15 Apr 2017 11:57:43 +0200
+    Ready:		True
+    Restart Count:	1
+    Requests:
+      cpu:		1
+      memory:		1000Mi
+    Liveness:		http-get http://:8080/healthz delay=10s timeout=1s period=5s #success=1 #failure=3
+    Readiness:		http-get http://:8080/healthz delay=10s timeout=1s period=5s #success=1 #failure=3
+    Environment:	<none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-s2v4d (ro)
+Conditions:
+  Type		Status
+  Initialized 	True 
+  Ready 	True 
+  PodScheduled 	True 
+Volumes:
+  default-token-s2v4d:
+    Type:	Secret (a volume populated by a Secret)
+    SecretName:	default-token-s2v4d
+    Optional:	false
+QoS Class:	Burstable
+Node-Selectors:	<none>
+Tolerations:	<none>
+Events:
+  FirstSeen	LastSeen	Count	From				SubObjectPath			Type		Reason		Message
+  ---------	--------	-----	----				-------------			--------	------		-------
+  3m		3m		1	default-scheduler						Normal		Scheduled	Successfully assigned test-container-2452850900-j99l1 to slave1.localdomain
+  3m		3m		1	kubelet, slave1.localdomain	spec.containers{test-container}	Normal		Created		Created container with docker id a83c75021453; Security:[seccomp=unconfined]
+  3m		3m		1	kubelet, slave1.localdomain	spec.containers{test-container}	Normal		Started		Started container with docker id a83c75021453
+  3m		2m		2	kubelet, slave1.localdomain	spec.containers{test-container}	Normal		Pulling		pulling image "rkurz/test-container"
+  2m		2m		3	kubelet, slave1.localdomain	spec.containers{test-container}	Warning		Unhealthy	Readiness probe failed: HTTP probe failed with statuscode: 400
+  2m		2m		3	kubelet, slave1.localdomain	spec.containers{test-container}	Warning		Unhealthy	Liveness probe failed: HTTP probe failed with statuscode: 400
+  2m		2m		1	kubelet, slave1.localdomain	spec.containers{test-container}	Normal		Killing		Killing container with docker id a83c75021453: pod "test-container-2452850900-j99l1_default(d4344486-21c1-11e7-9f88-02f0afada1b7)" container "test-container" is unhealthy, it will be killed and re-created.
+  3m		2m		2	kubelet, slave1.localdomain	spec.containers{test-container}	Normal		Pulled		Successfully pulled image "rkurz/test-container"
+  2m		2m		1	kubelet, slave1.localdomain	spec.containers{test-container}	Normal		Created		Created container with docker id 06ac92903645; Security:[seccomp=unconfined]
+  2m		2m		1	kubelet, slave1.localdomain	spec.containers{test-container}	Normal		Started		Started container with docker id 06ac92903645

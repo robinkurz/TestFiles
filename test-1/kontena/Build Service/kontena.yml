@@ -1,0 +1,30 @@
+stack: kontena/thesis-app
+version: 0.1.0
+services:
+  loadbalancer:
+    image: kontena/lb:latest
+    ports:
+      - 80:80
+    affinity:
+      - label==LB=true
+  app:
+    build: .
+    image: rkurz/test-container
+    instances: 2
+    links:
+      - loadbalancer
+    environment:
+      - KONTENA_LB_MODE=http
+      - KONTENA_LB_BALANCE=roundrobin
+      - KONTENA_LB_INTERNAL_PORT=8080
+      - KONTENA_LB_VIRTUAL_PATH=/
+    health_check:
+      protocol: http
+      port: 8080
+      interval: 5
+      uri: /healthz
+      initial_delay: 10
+      timeout: 1
+    affinity:
+      - label!=LB=true
+ 

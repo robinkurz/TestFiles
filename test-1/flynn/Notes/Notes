@@ -1,0 +1,9 @@
+Cloud Installer failed (uses Ubuntu 16.04x2)
+
+Manual Installer failed (Ubuntu 16.04x2)
+
+Manual Installer succeeded (Unbtu 14.04x5)
+
+Shutdown Befehl scheint sich zwar auf VM Zugriffe auszwirken, aber VM wird von DigitalOcean nicht als AUS angezeigt (Edit: auch wenn ich manuell per ssh shutdown mach zeigt DO das Droplet als aktiv an)
+
+Nachdem zwei Nodes down waren dauerte es ein wenig bis die CLI und das Dashboard wieder verwendet werden konnten.. wahrscheinlich sync von Status

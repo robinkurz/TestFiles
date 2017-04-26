@@ -1,0 +1,43 @@
+--set up nodes
+
+ssh root@207.154.231.24
+sudo bash < <(curl -fsSL https://dl.flynn.io/install-flynn)
+
+ssh root@138.68.82.139
+sudo bash < <(curl -fsSL https://dl.flynn.io/install-flynn)
+
+ssh root@138.68.67.63
+sudo bash < <(curl -fsSL https://dl.flynn.io/install-flynn)
+
+--init flynn cluster
+ssh root@207.154.231.24
+sudo flynn-host init --init-discovery
+
+--join the cluster
+ssh root@138.68.82.139
+sudo flynn-host init --discovery https://discovery.flynn.io/clusters/eab3abad-2aff-41d6-bd80-d611a32e6bee
+
+ssh root@138.68.67.63
+sudo flynn-host init --discovery https://discovery.flynn.io/clusters/eab3abad-2aff-41d6-bd80-d611a32e6bee
+
+--start flynn-host
+ssh root@207.154.231.24
+sudo start flynn-host
+
+ssh root@138.68.82.139
+sudo start flynn-host
+
+ssh root@138.68.67.63
+sudo start flynn-host
+
+--
+sudo \
+    CLUSTER_DOMAIN=lg73.flynnhub.com \
+    flynn-host bootstrap \
+    --min-hosts 3 \
+    --discovery https://discovery.flynn.io/clusters/eab3abad-2aff-41d6-bd80-d611a32e6bee
+
+--set up Docker push
+flynn docker set-push-url
+
+flynn docker login
